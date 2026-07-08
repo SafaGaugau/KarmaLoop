@@ -45,7 +45,7 @@ public class Projectile : MonoBehaviour
         // После интеграции заменить на систему от Юли.
         // ==========================================================
 
-        PlayerHealth health = other.GetComponent<PlayerHealth>();
+        PlayerSettings health = other.GetComponent<PlayerSettings>();
 
         if (health != null)
         {

@@ -10,14 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5973504283338641601}
   - component: {fileID: 8529058388802783798}
-  - component: {fileID: 1013815913813077928}
-  - component: {fileID: 6835721587492674310}
-  - component: {fileID: 975168813236181736}
   - component: {fileID: 4645103690340493905}
   - component: {fileID: 4731343613738034485}
-  - component: {fileID: 3535062290783119483}
-  - component: {fileID: -9163521491535828958}
-  - component: {fileID: 7215489631869922660}
+  - component: {fileID: 1754953996361796525}
+  - component: {fileID: 3620493790402398058}
+  - component: {fileID: 6822949042525345050}
   m_Layer: 0
   m_Name: player_0
   m_TagString: Player
@@ -99,45 +96,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1013815913813077928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6291880287133634687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c03d8fb006523488697ce5b8a48caa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 100
---- !u!114 &6835721587492674310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6291880287133634687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e427c0c644e7df24d988189a0d75bba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerLevel
---- !u!114 &975168813236181736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6291880287133634687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600cf50a80f13d348b926ae81fd57de7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  moveSpeed: 5
-  attackPower: 10
 --- !u!61 &4645103690340493905
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -211,7 +169,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3535062290783119483
+--- !u!114 &1754953996361796525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,12 +178,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6291880287133634687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600cf50a80f13d348b926ae81fd57de7, type: 3}
+  m_Script: {fileID: 11500000, guid: 83e4800313d8bf548b471ae183c62e6a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  moveSpeed: 5
-  attackPower: 10
---- !u!114 &-9163521491535828958
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSettings
+  BASEmoveSpeed: 5
+  BASEattackPower: 1
+  BASEattackSpeed: 0.6
+  BASEplayerHealth: 100
+  BUFFmoveSpead: 0.1
+  BUFFattackPower: 0.5
+  BUFFattackSpeed: 0.05
+  BASEplayerHeath: 10
+  currentLevel: 1
+--- !u!114 &3620493790402398058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,10 +199,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6291880287133634687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e427c0c644e7df24d988189a0d75bba7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cd8c49c46b549d4aa463e2530473cb9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerLevel
---- !u!114 &7215489631869922660
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
+--- !u!114 &6822949042525345050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,7 +211,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6291880287133634687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c03d8fb006523488697ce5b8a48caa, type: 3}
+  m_Script: {fileID: 11500000, guid: 6352318acd5df1e4b83e922866ca3d6d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 100
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFight
+  triggerZone: {fileID: 2111881917495902543, guid: 4e8297415f28e0a44aceb1d5149bc286, type: 3}
+  attackZone: {fileID: 3704137835514135986, guid: 98c8bd50064e4a44e9b9c00030190420, type: 3}
