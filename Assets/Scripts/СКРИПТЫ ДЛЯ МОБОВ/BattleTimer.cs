@@ -13,6 +13,7 @@ public class BattleTimer : MonoBehaviour
     [Header("References")]
     [SerializeField] private EnemySpawner spawner;
     [SerializeField] private GameObject portalPrefab;
+    [SerializeField] private Vector3 portalSpawnPosition = new Vector3(90f, 90f, 0f);
 
     [Header("TimeSlider")]
     [SerializeField] private Slider timerSlider;
@@ -79,7 +80,10 @@ public class BattleTimer : MonoBehaviour
 
         if (portalPrefab != null)
         {
-            Instantiate(portalPrefab, Vector3.zero, Quaternion.identity);
+            Instantiate(
+            portalPrefab,
+            portalSpawnPosition,
+            Quaternion.identity);
         }
 
         Debug.Log("Battle Finished");
