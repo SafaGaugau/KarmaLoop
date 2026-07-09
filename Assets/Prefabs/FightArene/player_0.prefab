@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -346,9 +346,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1754953996361796525
 MonoBehaviour:
@@ -363,14 +363,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSettings
   BASEmoveSpeed: 5
-  BASEattackPower: 1
+  BASEattackPower: 2
   BASEattackSpeed: 0.6
-  BASEplayerHealth: 100
-  BASElives: 1
+  BASEplayerHealth: 80
+  BASElives: 2
   BUFFmoveSpeed: 0.1
   BUFFattackPower: 0.5
   BUFFattackSpeed: 0.05
-  BUFFplayerHealth: 10
+  BUFFplayerHealth: 50
   currentLevel: 1
 --- !u!114 &3620493790402398058
 MonoBehaviour:
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
