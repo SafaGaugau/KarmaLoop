@@ -12,6 +12,10 @@ public class Kimnara : EnemyBase
 
     [SerializeField] private float shootCooldown = 3f;
 
+    private float baseHealth = 30f;
+    private float baseSpeed;
+    private float baseDamage=10f;
+
     private float shootTimer;
 
     protected override void Update()

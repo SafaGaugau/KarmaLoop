@@ -18,6 +18,7 @@ public class EnemyBase : MonoBehaviour
     protected Transform player;
 
     private float attackTimer;
+    public float Damage => damage; 
 
     protected virtual void Start()
     {
@@ -58,14 +59,17 @@ public class EnemyBase : MonoBehaviour
 
         if (distance <= attackRadius)
         {
-            // TODO: ИНТЕГРАЦИЯ С СИСТЕМОЙ ИГРОКА 
-            // Здесь необходимо вызвать получение урона игроком.
-            // PlayerHealth health = player.GetComponent<PlayerHealth>(); 
-            // if (health != null)
-            // health.TakeDamage(damage);
-            // Или любой другой другой метод, который будет использоваться в системе игрока.
-
-Debug.Log($"{name} attacked Player. Damage: {damage}");
+            // Наносим урон игроку
+            PlayerHealth health = player.GetComponent<PlayerHealth>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+                Debug.Log($"{name} атаковал игрока! Урон: {damage}");
+            }
+            else
+            {
+                Debug.LogWarning($"{name}: PlayerHealth не найден на игроке!");
+            }
 
             attackTimer = attackCooldown;
         }
