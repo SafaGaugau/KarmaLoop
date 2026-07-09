@@ -7,8 +7,6 @@ TagManager:
   - Arena
   - Mob
   - Background
-  - Ground
-  - Wall
   layers:
   - Default
   - TransparentFX
