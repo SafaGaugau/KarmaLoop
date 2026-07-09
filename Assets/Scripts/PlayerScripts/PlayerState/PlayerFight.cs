@@ -3,33 +3,32 @@ using System.Collections.Generic;
 
 public class PlayerFight : MonoBehaviour
 {
-    private PlayerSettings settings;
+    private PlayerSettings _settings;
     [SerializeField] private Transform triggerZone;
     [SerializeField] private Transform attackZone;
 
-    private float cooldown;
-    private List<Collider2D> enemiesInZone = new List<Collider2D>();
+    private float _cooldown;
+    private List<Collider2D> _enemiesInZone = new List<Collider2D>();
 
-    public bool IsInCombat => enemiesInZone.Count > 0;
+    public bool IsInCombat => _enemiesInZone.Count > 0;
 
     private void Awake()
     {
-        settings = GetComponent<PlayerSettings>();
+        _settings = GetComponent<PlayerSettings>();
         if (triggerZone == null) triggerZone = transform.Find("TriggerAttackZone");
         if (attackZone == null) attackZone = transform.Find("RadiusAttack");
     }
 
     private void Update()
     {
-        if (cooldown > 0) cooldown -= Time.deltaTime;
+        if (_cooldown > 0) _cooldown -= Time.deltaTime;
 
         if (triggerZone != null) triggerZone.position = transform.position;
         if (attackZone != null) attackZone.position = transform.position;
 
-        // Очищаем мёртвых врагов
-        enemiesInZone.RemoveAll(e => e == null || !e.gameObject.activeSelf);
+        _enemiesInZone.RemoveAll(e => e == null || !e.gameObject.activeSelf);
 
-        if (IsInCombat && cooldown <= 0)
+        if (IsInCombat && _cooldown <= 0)
         {
             Attack();
         }
@@ -37,7 +36,7 @@ public class PlayerFight : MonoBehaviour
 
     private void Attack()
     {
-        cooldown = settings.AttackSpeed;
+        _cooldown = _settings.AttackSpeed;
 
         if (attackZone != null)
         {
@@ -53,7 +52,12 @@ public class PlayerFight : MonoBehaviour
                 {
                     if (hit.CompareTag("Mob"))
                     {
-                        Debug.Log($"Цдар прошел"); //доработать, когда будут мобы
+                        var enemy = hit.GetComponent<EnemyBase>();
+                        if (enemy != null)
+                        {
+                            enemy.TakeDamage(_settings.AttackPower);
+                            Debug.Log($"⚔️ Удар по {hit.name} силой {_settings.AttackPower}");
+                        }
                     }
                 }
             }
@@ -62,35 +66,36 @@ public class PlayerFight : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Mob") && !enemiesInZone.Contains(other))
-        {
-            enemiesInZone.Add(other);
-        }
+        if (other.CompareTag("Mob") && !_enemiesInZone.Contains(other))
+            _enemiesInZone.Add(other);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Mob") && enemiesInZone.Contains(other))
-        {
-            enemiesInZone.Remove(other);
-        }
+        if (other.CompareTag("Mob") && _enemiesInZone.Contains(other))
+            _enemiesInZone.Remove(other);
     }
+
     private void OnDrawGizmosSelected()
     {
-        var collider = triggerZone.GetComponent<CircleCollider2D>();
-        if (collider != null)
+        if (triggerZone != null)
         {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(triggerZone.position, collider.radius);
+            var collider = triggerZone.GetComponent<CircleCollider2D>();
+            if (collider != null)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawWireSphere(triggerZone.position, collider.radius);
+            }
         }
-        
 
-        collider = attackZone.GetComponent<CircleCollider2D>();
-        if (collider != null)
+        if (attackZone != null)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(attackZone.position, collider.radius);
+            var collider = attackZone.GetComponent<CircleCollider2D>();
+            if (collider != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(attackZone.position, collider.radius);
+            }
         }
-        
     }
 }

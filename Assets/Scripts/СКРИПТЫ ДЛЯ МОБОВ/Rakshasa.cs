@@ -6,8 +6,9 @@ public class Rakshasa : EnemyBase
     [SerializeField] private float checkRadius = 3f;
     [SerializeField] private int requiredAllies = 4;
 
-    private float baseSpeed;
-    private float baseDamage;
+    private float baseHealth = 45f;
+    private float baseSpeed=1.2f;
+    private float baseDamage=8f;
     private float buffTimer = 0f; // Добавлено объявление переменной
 
     protected override void Start()

@@ -6,6 +6,10 @@ public class Naga : EnemyBase
     [SerializeField] private GameObject snakeTrailPrefab;
     [SerializeField] private float trailCooldown = 5f;
 
+    private float baseHealth = 65f;
+    private float baseSpeed;
+    private float baseDamage=12f;
+
     private float timer;
 
     protected override void Update()
